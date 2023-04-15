@@ -1,5 +1,7 @@
 #if UNITY_ANDROID
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Gilzoide.AudioLatency.Platforms
@@ -21,6 +23,24 @@ namespace Gilzoide.AudioLatency.Platforms
         }
 #endif
         public const string JavaClassName = "com.gilzoide.audiolatency.AudioOutputLatency";
+
+        public static async Task<double?> GetOutputLatencyAsync(CancellationToken cancellationToken = default)
+        {
+            if (!AndroidAudioOutputLatency.IsSupported)
+            {
+                return null;
+            }
+
+            using (var latencyMeasure = new AndroidAudioOutputLatency())
+            {
+                while (!latencyMeasure.HasOutputLatency)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await Task.Yield();
+                }
+                return latencyMeasure.OutputLatency;
+            }
+        }
 
         private AndroidJavaObject _javaObject;
 
