@@ -1,0 +1,16 @@
+{
+    "name": "Gilzoide.AudioLatency.Sample",
+    "rootNamespace": "Gilzoide.AudioLatency.Sample",
+    "references": [
+        "GUID:eaba7ca4d79f848b788a24a45197981f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
