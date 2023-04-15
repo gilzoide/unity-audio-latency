@@ -1,0 +1,11 @@
+{
+  "name": "com.gilzoide.audio-latency",
+  "displayName": "Audio Latency",
+  "version": "1.0.0",
+  "description": "Utilities for finding audio output latency",
+  "homepage": "https://github.com/gilzoide/unity-audio-latency",
+  "license": "Unlicense",
+  "author": {
+    "name": "Gil Barbosa Reis"
+  }
+}
