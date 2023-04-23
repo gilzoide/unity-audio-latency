@@ -8,11 +8,17 @@ namespace Gilzoide.AudioLatency.Sample
     {
         [SerializeField] private Text _outputLatencyText;
         [SerializeField] private Text _inputLatencyText;
+        [SerializeField] private Text _sampleRateText;
         [SerializeField] private float _updateSeconds;
 
-        public void Start()
+        private void Start()
         {
             StartCoroutine(UpdateRoutine());
+            
+            if (_sampleRateText)
+            {
+                _sampleRateText.text = AudioSettings.outputSampleRate.ToString();
+            }
         }
 
         private IEnumerator UpdateRoutine()
