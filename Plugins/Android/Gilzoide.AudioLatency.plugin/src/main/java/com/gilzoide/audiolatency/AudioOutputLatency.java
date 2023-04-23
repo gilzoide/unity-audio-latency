@@ -20,6 +20,7 @@ public class AudioOutputLatency {
     }
 
     public AudioOutputLatency(int sampleRate, int bufferSize) {
+        Log.v("AudioOutputLatency", "creating AudioTrack (sample rate: " + sampleRate + ", buffer size: " + bufferSize + ")");
         this.bufferSize = bufferSize;
         this.audioTrack = CreateAudioTrack(sampleRate, bufferSize);
     }
@@ -39,7 +40,7 @@ public class AudioOutputLatency {
 
         audioTrack.play();
 
-        Log.d("AudioOutputLatency", "starting AudioTrack");
+        Log.v("AudioOutputLatency", "starting AudioTrack");
     }
 
     public void stop() {
@@ -53,7 +54,7 @@ public class AudioOutputLatency {
             sampleGenerator = null;
         }
 
-        Log.d("AudioOutputLatency", "stopping AudioTrack");
+        Log.v("AudioOutputLatency", "stopping AudioTrack");
     }
 
     public boolean isMeasuring() {
@@ -86,7 +87,7 @@ public class AudioOutputLatency {
                 .setContentType(AudioAttributes.CONTENT_TYPE_UNKNOWN)
                 .build(),
             new AudioFormat.Builder()
-                .setEncoding(AudioFormat.ENCODING_PCM_8BIT)
+                .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
                 .setSampleRate(sampleRate)
                 .setChannelMask(AudioFormat.CHANNEL_OUT_MONO)
                 .build(),
@@ -114,8 +115,8 @@ public class AudioOutputLatency {
 
         @Override
         public void run() {
-            byte[] buffer = new byte[bufferSize];
-            Arrays.fill(buffer, (byte) 128);
+            short[] buffer = new short[bufferSize];
+            Arrays.fill(buffer, (short) 0);
 
             while (!shouldStop.get()) {
                 int writtenBytes = audioTrack.write(buffer, 0, bufferSize);
