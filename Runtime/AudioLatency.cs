@@ -24,5 +24,14 @@ namespace Gilzoide.AudioLatency
             return Task.FromResult<double?>(null);
 #endif
         }
+
+        public static int? GetOptimalOutputBufferSize()
+        {
+#if UNITY_ANDROID
+            return Platforms.AndroidAudioManagerProperties.GetOptimalOutputBufferSize();
+#else
+            return null;
+#endif
+        }
     }
 }

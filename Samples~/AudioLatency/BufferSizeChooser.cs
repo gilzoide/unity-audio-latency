@@ -54,6 +54,12 @@ namespace Gilzoide.AudioLatency.Sample
             _options.Add(1024);
             dropdownOptions.Add(new Dropdown.OptionData("Best Performance (1024)"));
 
+            if (AudioLatency.GetOptimalOutputBufferSize() is int optimalBufferSize)
+            {
+                _options.Add(optimalBufferSize);
+                dropdownOptions.Add(new Dropdown.OptionData($"Optimal buffer size ({optimalBufferSize})"));
+            }
+
             int currentBufferSize = AudioSettings.GetConfiguration().dspBufferSize;
             int currentIndex = _options.IndexOf(currentBufferSize);
             if (currentIndex < 0)
