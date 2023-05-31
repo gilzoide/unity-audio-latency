@@ -91,7 +91,7 @@ public class AudioOutputLatency {
                 .setSampleRate(sampleRate)
                 .setChannelMask(AudioFormat.CHANNEL_OUT_MONO)
                 .build(),
-            bufferSizeInSamples,
+            bufferSizeInSamples * 2,  // each sample takes 2 bytes in PCM 16 bit
             AudioTrack.MODE_STREAM,
             AudioManager.AUDIO_SESSION_ID_GENERATE
         );

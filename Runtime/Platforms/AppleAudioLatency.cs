@@ -11,7 +11,7 @@ namespace Gilzoide.AudioLatency.Platforms
     {
         /// <summary>Find the device's audio output latency as reported by AVAudioSession</summary>
         /// <remarks>Available in iOS/iPadOS 6.0+, Mac Catalyst 13.1+ and tvOS 9.0+</remarks>
-        /// <returns>Audio output latency, if available. Returns <see langname="null"/> otherwise.</returns>
+        /// <returns>Audio output latency, if available. Returns <see langword="null"/> otherwise.</returns>
         /// <seealso href="https://developer.apple.com/documentation/avfaudio/avaudioengine"/>
         public static double? GetOutputLatency()
         {
@@ -20,7 +20,7 @@ namespace Gilzoide.AudioLatency.Platforms
 
         /// <summary>Find the device's audio input latency as reported by AVAudioSession</summary>
         /// <remarks>Available in iOS/iPadOS 6.0+, Mac Catalyst 13.1+ and tvOS 9.0+</remarks>
-        /// <returns>Audio input latency, if available. Returns <see langname="null"/> otherwise.</returns>
+        /// <returns>Audio input latency, if available. Returns <see langword="null"/> otherwise.</returns>
         /// <seealso href="https://developer.apple.com/documentation/avfaudio/avaudioengine"/>
         public static double? GetInputLatency()
         {
